@@ -1,0 +1,95 @@
+{% block body %}
+    
+<style>
+#tabla {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+ 
+  width: 50%;
+  border: 3px solid #22368A;
+  font-style:bold;
+  margin:auto;
+  margin-top: 10%;
+ 
+
+}
+
+body{
+   background: url(https://fondosmil.com/fondo/20919.jpg) no-repeat;  
+}
+
+#tabla td, #tabla th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tabla tr:nth-child(even){background-color: #97C7FE;}
+
+#tabla tr:hover {background-color: #DAE9FA}
+
+#tabla th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #22368A;
+  color: white;
+}
+tr{
+   
+     font-size:18px;
+}
+</style>
+    <table id="tabla">
+        <thead>
+            <tr>
+                 <th>Consultant</th>
+                 <span>
+                 <th>Project</th>
+                 <span>
+                 <th>Hours</th>
+                 <span>
+                 <th>Payment</th>
+                 <span>
+                 <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hours_of_project in hours_of_projects %}
+             <tr>
+                 <td>{{ hours_of_project.nameConsultant }}</td>     
+                 <td>{{ hours_of_project.projectName }}</td>    
+                 {% for xs in sumas %}
+                 <td>{{ xs[i] }} </td>
+                  {% set i = i+1 %}
+                 {% endfor %} 
+                 {% if hours_of_project.paymentPerHour == null %}
+                 <td>Put Value
+                 <a href="{{ path('app_hours_of_project_edit', {'id': hours_of_project.id}) }}">edit</a>
+                 </td>
+              
+                 {% endif %}   
+                 {% if hours_of_project.paymentPerHour != null %}
+                 <td> {{hours_of_project.paymentPerHour}} </td>
+                 {% endif %}
+                 {% for xs in total %}
+                 {% if xs[j] == null %}
+                   <td> {{xs[j] == 0}} </td>
+                 {% endif %}
+                 {% if xs[j] != null %}
+                    <td> {{xs[j]}}€ </td>
+                    {% set j = j+1 %}
+                 {% endif %}
+                 {% endfor %}
+                 
+             </tr>
+            
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

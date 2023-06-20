@@ -1,0 +1,252 @@
+{% apply inline_css %}
+    <html>
+    
+        <head>
+            <style>
+        * {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1em;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+::selection {
+  background-color: #2D3654;
+}
+
+body {
+  height: 100%;
+    background: url(https://fondosmil.com/fondo/20919.jpg) no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+img {
+  height: auto;
+  width: 100%;
+  user-select: none;
+}
+
+#busicard {
+
+	position: relative;
+  background-color: #2D3654;
+  border-radius: 35px;
+  min-height: 500px;
+  max-width: 400px;
+  margin: 80px auto;
+}
+
+#busicard h1 {
+	color: #FAEAFF;
+}
+
+
+
+
+
+
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+user-select: none;
+}
+
+.user img {
+  border-radius: 100px;
+  width: 160px;
+  border: 4px solid #FAEAFF;
+  margin-top: -20px;
+}
+
+.gear {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin: 35px;
+}
+
+
+
+.info li {
+  color: #eee;
+  font-size: 0.8em;
+  display: inline-block;
+  margin: 0 6px;
+
+}
+
+.hrtop {
+  display: inline-block;
+  background-color: #FAEAFF;
+  width: 2px;
+  height: 22px;
+  margin: -2px auto;
+}
+
+.contacts {
+  min-height: 100px;
+}
+
+.contacts i {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.contacts a {
+  margin: 0 6px;
+}
+
+.bfollow {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0 0 0;
+}
+
+.bfollow a {
+  position: absolute;
+  box-shadow: 0 0 15px 1px #000;
+  color: #FAEAFF;
+  background-color: #4059AB;
+  border-radius: 30px;
+  padding: 7px 49px;
+  transition: 350ms;
+    -webkit-transition: all .3s;
+}
+
+.bfollow a:hover {
+  font-weight: bold;
+  color: #2F4858;
+  background-color: #FAEAFF;
+  padding: 8px 56px;
+  transition: 350ms;
+    -webkit-transition: all .3s;
+}
+
+.content {
+  color: #FAEAFF;
+  background: #4059AB;
+  border-radius: 0 0 30px 30px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.content p {
+  margin: 30px 0 25px 0;
+}
+
+.lock {
+  width: 26px;
+  height: 16px;
+  background: #FAEAFF;
+  position: relative;
+  border-radius: 4px;
+  top: 30px;
+}
+
+.lock:before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border: 6px solid #FAEAFF;
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  position: absolute;
+  bottom: 16px;
+  right: 4px;
+}
+
+h1{
+  font-size:30px;
+}
+
+
+
+         </style>
+        </head>
+        <body>
+            
+        </body>
+    </html>
+{% endapply %}
+
+
+
+{% block body %}
+
+  {% if app.user %}
+
+        <div class="login" >
+      <div id="busicard">
+   <div class="menu">  
+      
+    <div class="movembar">
+     <a  href="{{ path('app_logout') }}">
+        <a href="#" class="mbut"><div class="mbar"></div></a>
+         </a> 
+    </div>
+    <div class="movegear">
+        <a href="#"><div class="gear"></div></a>
+    </div>
+   </div>
+      <div class="user">
+        <img src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png">
+      </div>
+     
+      <h1 class="nombre">{{ app.user.username }}</h1> 
+       <br>
+      <ul class="info">
+         {% if app.user.roles[0]=='ROLE_CONSULTANT'%} 
+ 
+   <h1 class="cons">CONSULTANT</h1>
+       
+   {% endif %} 
+        {% if app.user.roles[0]=='ROLE_ADMIN'%} 
+    
+     <h1 class="cons">ADMIN</h1>
+     <a href="{{ path('admin')}}">ACCESS</a>
+    
+    {% endif %}
+    {% if app.user.roles[0]=='ROLE_EMPLOYEE'%} 
+     <div>
+     <h1>EMPLOYEE</h1>
+     <a href="{{ path('employee')}}">ACCESS</a>
+  
+
+    
+    {% endif %}
+    <br>
+      </ul>
+    
+    <div class="bfollow">
+      <a  class="acceso" href="{{ path('consultant')}}"> ACCESS</a>
+    </div>
+  <div class="content">
+    <div class="lock"></div>
+ 
+  </div>
+</div>
+            
+           
+      
+  
+      
+    {% endif %} 
+   
+    
+{% endblock %}
