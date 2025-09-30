@@ -1,48 +1,44 @@
-⏱️ Time Tracking & Project Management (Symfony)
+# ⏱️ Time Tracking & Project Management (Symfony)
 
-A time tracking and project management platform built with Symfony & Twig, designed to handle real-world business needs:
+A **time tracking and project management platform** built with **Symfony & Twig**, designed to handle real-world business needs:
 
-User registration & authentication
+- User registration & authentication  
+- Profile management  
+- Work hours calculation  
+- Work calendar with public holidays  
+- Admin panel for locking/unlocking project hours on a weekly/monthly basis  
 
-Profile management
+🚀 **Tech stack**: PHP 8.2 · Symfony 6 · Twig · Doctrine ORM · PostgreSQL/MySQL · Docker  
 
-Work hours calculation
+---
 
-Work calendar with public holidays
+## ✨ Features
 
-Admin panel for locking/unlocking project hours on a weekly/monthly basis
+### 🔐 Authentication & Security
+Secure login system with CSRF protection and optional 2FA.  
 
-🚀 Tech stack: PHP 8.2 · Symfony 6 · Twig · Doctrine ORM · PostgreSQL/MySQL · Docker
+### 👤 User Management
+Registration, profile editing, role-based access (`USER`, `MANAGER`, `ADMIN`).  
 
-✨ Features
+### ⏱️ Time Entries
+Add, edit, and calculate working hours, including validations for night shifts and overlaps.  
 
-🔐 Authentication & Security
-Secure login system with CSRF protection and optional 2FA.
+### 📅 Work Calendar
+Automatic detection of weekends and public holidays. Support for importing ICS files.  
 
-👤 User Management
-Registration, profile editing, role-based access (USER, MANAGER, ADMIN).
+### 🔒 Lock Periods
+Admins can lock/unlock weekly or monthly periods per project to prevent late modifications.  
 
-⏱️ Time Entries
-Add, edit, and calculate working hours, including validations for night shifts and overlaps.
+### 📊 Reports & Exports
+Generate weekly/monthly reports with CSV/Excel export.  
 
-📅 Work Calendar
-Automatic detection of weekends and public holidays. Support for importing ICS files.
+---
 
-🔒 Lock Periods
-Admins can lock/unlock weekly or monthly periods per project to prevent late modifications.
+## 🛠️ Installation
 
-📊 Reports & Exports
-Generate weekly/monthly reports with CSV/Excel export.
-
-🛠️ Installation
-Requirements
-
-PHP 8.2+
-
-Composer
-
-Symfony CLI
-
-PostgreSQL or MySQL
-
-Docker (optional, for one-command setup)
+### Requirements
+- PHP 8.2+
+- Composer
+- Symfony CLI
+- PostgreSQL or MySQL
+- Docker (optional, for one-command setup)
